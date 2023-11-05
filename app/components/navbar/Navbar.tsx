@@ -1,5 +1,6 @@
 import { SafeUser } from '@/app/types';
 
+import Categories from './Categories';
 import Logo from './Logo';
 import Search from './Search';
 import UserMenu from './UserMenu';
@@ -8,6 +9,7 @@ import Container from '../Container';
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
+
 const Navbar = ({ currentUser }: NavbarProps) => (
   <nav className="fixed w-full bg-white z-10 shadow-sm">
     <div className="py-4 border-b-[1px]">
@@ -19,6 +21,7 @@ const Navbar = ({ currentUser }: NavbarProps) => (
         </div>
       </Container>
     </div>
+    <Categories />
   </nav>
 );
 export default Navbar;
