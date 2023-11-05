@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 import React, { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -90,15 +91,13 @@ const RegisterModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}} // TODO: add next auth google
-        // onClick={() => signIn('google')}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}} // TODO: add next auth github
-        // onClick={() => signIn('github')}
+        onClick={() => signIn('github')}
       />
       <div
         className="

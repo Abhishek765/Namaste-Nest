@@ -1,19 +1,20 @@
 'use client';
 
-import { User } from '@prisma/client';
 import { signOut } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 import useLoginModal from '@/app/hooks/useLoginModal';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import { SafeUser } from '@/app/types';
 
 import MenuItem from './MenuItem';
 import Avatar from '../Avatar';
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
+
 const UserMenu = ({ currentUser }: UserMenuProps) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -37,7 +38,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
           className="p-4 md:py-1 md:px-2 border-[1px] flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -52,6 +53,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
                 <MenuItem onClick={() => {}} label={'My reservations'} />
                 <MenuItem onClick={() => {}} label={'My properties'} />
                 <MenuItem onClick={() => {}} label={'Book my home'} />
+                <hr />
                 <MenuItem onClick={signOut} label={'Logout'} />
               </>
             ) : (

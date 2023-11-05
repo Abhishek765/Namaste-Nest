@@ -39,7 +39,7 @@ model Account {
   id_token          String? @db.String
   session_state     String?
   // Relationship
-  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId            String  @db.ObjectId
 
   // Contraints
@@ -60,7 +60,7 @@ model Listing {
   createdAt     DateTime @default(now())
 
   // Relationship
-  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @db.ObjectId
 
   reservations Reservation[]
@@ -73,7 +73,7 @@ model Reservation {
   totatPrice Int
   createdAt  DateTime @default(now())
 
-  User      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String  @db.ObjectId
   Listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
   listingId String  @db.ObjectId
