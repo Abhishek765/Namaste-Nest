@@ -29,6 +29,7 @@ export const authOptions: AuthOptions = {
           throw new Error('Invalid credentials');
         }
 
+        //! User check from DB
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
@@ -55,7 +56,7 @@ export const authOptions: AuthOptions = {
     })
   ],
   pages: {
-    signIn: '/' // redirect to auth page (in our case this is home page) -> if any errors are encountered
+    signIn: '/' //! redirect to auth page (in our case this is home page) -> if any errors are encountered
   },
   debug: process.env.NODE_ENV === 'development', // Dev debugging
   session: {
