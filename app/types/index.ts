@@ -15,3 +15,5 @@ export type CategoriesType = {
   icon: IconType;
   description: string;
 };
+
+export type WatchCategoriesType = 'category' | 'location';

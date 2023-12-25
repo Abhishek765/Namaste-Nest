@@ -8,16 +8,17 @@ import toast from 'react-hot-toast';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 
+import useLoginModal from '@/app/hooks/useLoginModal';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 
 import Modal from './Modal';
 import Button from '../Button';
 import Heading from '../Heading';
-import Input from '../inputs/Input';
+import { Input } from '../inputs';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
-
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
@@ -34,8 +35,8 @@ const RegisterModal = () => {
 
   const onToggle = useCallback(() => {
     registerModal.onClose();
-    // loginModal.onOpen();
-  }, [registerModal]);
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -107,7 +108,7 @@ const RegisterModal = () => {
           font-light
         ">
         <p>
-          Already have an account?
+          Already have an account?{' '}
           <span
             onClick={onToggle}
             className="

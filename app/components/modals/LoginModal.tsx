@@ -14,7 +14,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
 import Button from '../Button';
 import Heading from '../Heading';
-import Input from '../inputs/Input';
+import { Input } from '../inputs';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -35,9 +35,9 @@ const LoginModal = () => {
   });
 
   const onToggle = useCallback(() => {
-    registerModal.onClose();
-    // loginModal.onOpen();
-  }, [registerModal]);
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -112,7 +112,7 @@ const LoginModal = () => {
           font-light
         ">
         <p>
-          Already have an account?
+          First using Namaste Nest?{' '}
           <span
             onClick={onToggle}
             className="
@@ -120,7 +120,7 @@ const LoginModal = () => {
               cursor-pointer 
               hover:underline
             ">
-            Log in
+            Create an account
           </span>
         </p>
       </div>
